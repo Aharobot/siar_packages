@@ -7,7 +7,7 @@ The package is composed by three nodes:
 * *siar_teleop_joy* is a program for teleoperating the robot with a joystick by using ROS (*optional feature*).
 * *siar_calibration_node* a simple node for calibrating the odometry estimation and commands of SIAR. Use: rosrun siar_driver siar_calibration_node \<type of test\> \<total time\> \<raw velocity command\> The program accepts joystick commands before starting the test (a joy node should be running).
 
-The raposa_teleop_joy program is based on the following tutorial: 
+The siar_teleop_joy program is based on the following tutorial: 
 *Writing a Teleoperation Node for a Linux-Supported Joystick* 
 http://wiki.ros.org/joy/Tutorials/WritingTeleopNode 
 under license http://creativecommons.org/licenses/by/3.0/
@@ -25,8 +25,6 @@ under license http://creativecommons.org/licenses/by/3.0/
 * An ArduIMU v3 IMU device. Note that this package depends on the package arduimu_v3.
 
 * (*Optional*): A wireless joystick or gamepad with at least 8 buttons and 1 axis compatible with ROS . The system has been tested with the *Logitech Wireless F710* gamepad. 
-
-* (*Optional*): An id-mind controller (Frog style) conected via 900 MHz modem
 
 ## Easy start
 
@@ -66,7 +64,7 @@ The next topics are published by the *siar_teleop_joy*:
 
 ## ROS parameters
 
-Parameters of the *teresa_driver* program:
+Parameters of the *siar_driver* program:
 
 * **siar_device_1**: device of the control board (i.e. /dev/ttyUSB0). It is advised to use the id of the device: /dev/serial/by-id/usb-FTDI_MM232R_USB_MODULE_FTB3LEN7-if00-port0
 

@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<package>
+<package format="2">
   <name>siar_driver</name>
   <version>0.0.0</version>
   <description>The siar_driver package</description>
@@ -20,29 +20,22 @@
 
 
   <buildtool_depend>catkin</buildtool_depend>
-  v<build_depend>roscpp</build_depend>
+  <depend>arduimu_v3</depend>
+  <depend>functions</depend>
+  <build_depend>roscpp</build_depend>
   <build_depend>rospy</build_depend>
-  <build_depend>arduimu_v3</build_depend>
-  <build_depend>functions</build_depend>
-  <build_depend>kdl_parser</build_depend>
-  <build_depend>message_generation</build_depend>
   <build_depend>std_msgs</build_depend>
+  <build_export_depend>siar_msgs</build_export_depend>
   <build_depend>nav_msgs</build_depend>
-  <build_depend>robot_state_publisher</build_depend>
   <build_depend>sensor_msgs</build_depend>
   <build_depend>tf</build_depend>
-  <run_depend>roscpp</run_depend>
-  <run_depend>rospy</run_depend>
-  <run_depend>arduimu_v3</run_depend>
-  <run_depend>functions</run_depend>
-  <run_depend>kdl_parser</run_depend>
-  <run_depend>message_generation</run_depend>
-  <run_depend>message_runtime</run_depend>
-  <run_depend>std_msgs</run_depend>
-  <run_depend>nav_msgs</run_depend>
-  <run_depend>robot_state_publisher</run_depend>
-  <run_depend>sensor_msgs</run_depend>
-  <run_depend>tf</run_depend>
+  <exec_depend>roscpp</exec_depend>
+  <exec_depend>rospy</exec_depend>
+  <exec_depend>std_msgs</exec_depend>
+  <exec_depend>nav_msgs</exec_depend>
+  <exec_depend>robot_state_publisher</exec_depend>
+  <exec_depend>tf</exec_depend>
+  <exec_depend>sensor_msgs</exec_depend>
 
 
   <!-- The export tag contains other, unspecified, tags -->

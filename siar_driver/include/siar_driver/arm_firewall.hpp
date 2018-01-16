@@ -2,8 +2,8 @@
 #define __ARM_FIREWALL_HPP__
 
 #include "ros/ros.h"
-#include "siar_driver/SiarArmCommand.h"
-#include "siar_driver/SiarStatus.h"
+#include "siar_msgs/SiarArmCommand.h"
+#include "siar_msgs/SiarStatus.h"
 #include <boost/array.hpp>
 
 

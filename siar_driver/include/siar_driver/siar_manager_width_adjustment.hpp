@@ -361,7 +361,7 @@ width_to_lin_pos(NULL), x_elec_to_lin_pos(NULL)
   }
   
   ros::NodeHandle pn("~");
-  state_pub = pn.advertise<siar_driver::SiarStatus>("/siar_status", 5);
+  state_pub = pn.advertise<siar_msgs::SiarStatus>("/siar_status", 5);
   slow_motion_sub = pn.subscribe("/slow_motion", 1, &SiarManagerWidthAdjustment::slowReceived, this);
   reverse_sub = pn.subscribe("/reverse", 1, &SiarManagerWidthAdjustment::reverseReceived, this);
   op_sub = pn.subscribe("/operation_mode", 1, &SiarManagerWidthAdjustment::opReceived, this);

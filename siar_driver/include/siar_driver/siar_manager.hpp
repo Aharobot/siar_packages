@@ -45,7 +45,7 @@
 #include "siar_config.hpp"
 #include "arduimu_v3/imu.hpp"
 #include <nav_msgs/Odometry.h>	
-#include "siar_driver/SiarStatus.h"
+#include "siar_msgs/SiarStatus.h"
 
 //-- HEADERS ----------------------------------------------------------------------------
 
@@ -107,7 +107,7 @@ class SiarManager
   }
 
   //! @brief accessor to the state of Siar
-  const siar_driver::SiarStatus &getState() const {return state;}
+  const siar_msgs::SiarStatus &getState() const {return state;}
 
   //! @brief Sets the IMU with a determinate updating rate
   //! @retval true The IMU was opened successfully
@@ -124,7 +124,7 @@ class SiarManager
   
   protected:
   SiarConfig _config;
-  siar_driver::SiarStatus state;
+  siar_msgs::SiarStatus state;
   
   bool first_odometry;
   

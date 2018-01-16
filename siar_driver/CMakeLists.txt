@@ -6,42 +6,18 @@ add_compile_options(-std=c++11)
 ## if COMPONENTS list like find_package(catkin REQUIRED COMPONENTS xyz)
 ## is used, also find other catkin packages
 find_package(catkin REQUIRED COMPONENTS
-  roscpp
-  rospy
   arduimu_v3
   functions
-  kdl_parser
-  message_generation
+  roscpp
+  rospy
+  siar_msgs
   std_msgs
   nav_msgs
-  robot_state_publisher
   sensor_msgs
   tf
 )
 
-## System dependencies are found with CMake's conventions
-# find_package(Boost REQUIRED COMPONENTS system)
-
-## Generate messages in the 'msg' folder
-add_message_files(
-  FILES
-  SiarBatteryMonitor.msg
-  SiarPowerSupply.msg
-  SiarStatus.msg 
-  SiarArmCommand.msg
-  SiarLightCommand.msg
-)
-
-## Generate added messages and services with any dependencies listed here
-generate_messages(
-  DEPENDENCIES
-  std_msgs
-  nav_msgs
-)
-
-# find_package(catkin REQUIRED genmsg actionlib_msgs actionlib)
-# add_action_files(DIRECTORY action FILES DoDishes.action)
-# generate_messages(DEPENDENCIES actionlib_msgs)
+find_package(Eigen3 REQUIRED)
 
 ###################################
 ## catkin specific configuration ##
@@ -50,8 +26,8 @@ generate_messages(
 catkin_package(
  INCLUDE_DIRS include
 #  LIBRARIES siar_driver
- CATKIN_DEPENDS roscpp rospy arduimu_v3 functions kdl_parser std_msgs message_generation message_runtime nav_msgs robot_state_publisher sensor_msgs tf
-#  DEPENDS system_lib
+ CATKIN_DEPENDS roscpp rospy std_msgs nav_msgs sensor_msgs tf
+ DEPENDS eigen3
 )
 
 ###########

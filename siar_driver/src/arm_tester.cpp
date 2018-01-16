@@ -1,11 +1,11 @@
 #include <ros/ros.h>
-#include <siar_driver/SiarArmCommand.h>
+#include <siar_msgs/SiarArmCommand.h>
 #include <functions/functions.h>
 #include <std_msgs/UInt8.h>
 
-using namespace siar_driver;
-using namespace functions;
+using namespace siar_msgs;
 using namespace std;
+using functions::getMatrixFromFile;
 
 int main(int argc, char **argv) {
   vector <SiarArmCommand> v;

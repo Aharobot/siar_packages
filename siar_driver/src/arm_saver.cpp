@@ -21,9 +21,13 @@
 
 #include <ros/ros.h>
 #include <sensor_msgs/Joy.h>
-#include <siar_driver/SiarStatus.h>
-#include <stdlib.h>
+#include <siar_msgs/SiarStatus.h>
 #include <functions/functions.h>
+#include <stdlib.h>
+#include <fstream>
+
+using namespace std;
+using namespace functions;
 
 ///////////////////////////////////////////////////
 // This program saves a trajectory. Press START Button to save each position
@@ -45,7 +49,7 @@ void joyReceived(const sensor_msgs::Joy::ConstPtr& joy) {
 boost::array <int16_t, 5> curr_pos;
 bool pos_received = false;
 
-void herculexPosCb(const siar_driver::SiarStatus::ConstPtr& msg) {
+void herculexPosCb(const siar_msgs::SiarStatus::ConstPtr& msg) {
   curr_pos = msg->herculex_position;
   pos_received = true;
 }
@@ -71,7 +75,7 @@ int main(int argc, char** argv)
   pn.param<int>("start_button", startButton, START_BUTTON);
   
   ros::Subscriber joy_sub = n.subscribe<sensor_msgs::Joy>("/joy", 5, joyReceived);
-  ros::Subscriber status_sub = n.subscribe<siar_driver::SiarStatus>("/siar_status", 1, herculexPosCb);
+  ros::Subscriber status_sub = n.subscribe<siar_msgs::SiarStatus>("/siar_status", 1, herculexPosCb);
   ros::Rate rate(freq);
   
   std::vector<int16_t> v;
@@ -108,7 +112,7 @@ int main(int argc, char** argv)
     os << "\n";
   }
   
-  functions::writeStringToFile(std::string(argv[1]), os.str());
+  writeStringToFile(string(argv[1]), os.str());
   
   return 0;
 }

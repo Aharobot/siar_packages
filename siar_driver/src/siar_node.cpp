@@ -32,12 +32,10 @@
 #include <std_msgs/Int16.h>
 #include <std_msgs/UInt8.h>
 #include <boost/bind.hpp>
-#include <robot_state_publisher/robot_state_publisher.h>
-#include <kdl_parser/kdl_parser.hpp>
 #include "siar_driver/siar_manager.hpp"
 #include "siar_driver/siar_manager_width_adjustment.hpp"
-#include "siar_driver/SiarArmCommand.h"
-#include "siar_driver/SiarLightCommand.h"
+#include "siar_msgs/SiarArmCommand.h"
+#include "siar_msgs/SiarLightCommand.h"
 
 
 #define FREQ		50.0
@@ -48,20 +46,20 @@ SiarManagerWidthAdjustment *siar = NULL;
 
 ros::Time cmd_vel_time;
 double vel_timeout;
-siar_driver::SiarStatus siar_state; // State of SIAR
+siar_msgs::SiarStatus siar_state; // State of SIAR
 SiarConfig siar_config;
 
 // -------------- New commands ARM & width -------------------------------//
 
-using siar_driver::SiarArmCommand;
-using siar_driver::SiarLightCommand;
+using siar_msgs::SiarArmCommand;
+using siar_msgs::SiarLightCommand;
 void cmdVelReceived(const geometry_msgs::Twist::ConstPtr& cmd_vel)
 {
   cmd_vel_time = ros::Time::now();
   siar->setVelocity(cmd_vel->linear.x,cmd_vel->angular.z);
 }
 
-void commandArmReceived(const siar_driver::SiarArmCommand::ConstPtr& arm_cmd) {
+void commandArmReceived(const SiarArmCommand::ConstPtr& arm_cmd) {
   // Then check the remaining stuff
   ArmFirewall::checkJointLimits(arm_cmd->joint_values);
   for (int i = 0; i < N_HERCULEX; i++) {
@@ -70,12 +68,10 @@ void commandArmReceived(const siar_driver::SiarArmCommand::ConstPtr& arm_cmd) {
 }
 
 
-void commandLightReceived(const siar_driver::SiarLightCommand::ConstPtr& light_cmd) {
+void commandLightReceived(const SiarLightCommand::ConstPtr& light_cmd) {
   siar->setLights(light_cmd->front, light_cmd->rear);
   
 }
-
-// void publishArmTF(const siar_driver::SiarStatus &st, tf::TransformBroadcaster &tf_broad); TODO: Necessary or in gonzalo's module?
 
 void armTorqueReceived(const std_msgs::UInt8::ConstPtr &val) {
   uint8_t new_state;

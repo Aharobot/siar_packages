@@ -93,7 +93,7 @@ int main(int argc, char** argv)
   
   pn.param<std::string>("battery_device", battery_port, "/dev/serial/by-id/usb-FTDI_MM232R_USB_MODULE_FTGT8JO-if00-port0");
   SiarConfig siar_config;
-  siar_driver::SiarStatus st;
+  siar_msgs::SiarStatus st;
   
   SiarManager *siar = NULL;
   

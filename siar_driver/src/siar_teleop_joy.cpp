@@ -31,7 +31,7 @@
 #include <std_msgs/Int8.h>
 #include <std_msgs/UInt8.h>
 #include <sensor_msgs/Joy.h>
-#include <siar_driver/SiarLightCommand.h>
+#include <siar_msgs/SiarLightCommand.h>
 #include <stdlib.h>
 
 ///////////////////////////////////////////////////
@@ -313,7 +313,7 @@ void sendSlowCmd(bool slow_mode, ros::Publisher &pub) {
 
 void publishLight()
 {
-  siar_driver::SiarLightCommand msg;
+  siar_msgs::SiarLightCommand msg;
   msg.front = front_light;
   msg.rear = rear_light;
   light_cmd_pub.publish(msg);
@@ -377,7 +377,7 @@ int main(int argc, char** argv)
   // Width and arm
   width_pos_pub = n.advertise<std_msgs::Float32>("width_pos", 1);
   arm_torque_pub = n.advertise<std_msgs::UInt8>("arm_torque", 1);
-  light_cmd_pub = n.advertise<siar_driver::SiarLightCommand>("light_cmd", 1);
+  light_cmd_pub = n.advertise<siar_msgs::SiarLightCommand>("light_cmd", 1);
   
   // ---------END WIDTH ARM ---
   

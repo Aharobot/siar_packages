@@ -119,7 +119,7 @@ inline void _printTime() {
 
 //! Communication parameters
 const uint32_t SiarSerial::baud_rate = B115200;
-const uint8_t SiarSerial::open_mode = O_RDWR | O_NOCTTY | O_NDELAY;
+const uint8_t SiarSerial::open_mode = O_RDWR ;
 
 inline SiarSerial::SiarSerial(const std::string& devicename) :
 SerialInterface(devicename, false),
